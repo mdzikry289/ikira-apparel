@@ -260,7 +260,7 @@
 </footer>
 
 <!-- MODAL -->
-<div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div id="modal" onclick="outsideClick(event)" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
    <div id="modalContent" class="bg-white rounded-xl max-w-md w-full p-6 relative">
   <div class="bg-white rounded-xl max-w-md w-full p-6 relative">
 
@@ -281,7 +281,7 @@
 </div>
 
 <!-- CHECKOUT -->
-<div id="checkout" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+<div id="checkout" onclick="outsideClickCheckout(event)" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
   <div id="checkoutContent" class="bg-white rounded-xl max-w-md w-full p-6">
   <div class="bg-white rounded-xl max-w-md w-full p-6">
 
@@ -307,6 +307,9 @@
 </div>
 
 <script>
+let startY = 0;
+
+// OPEN MODAL
 function openModal(title, desc, price, img) {
   const modal = document.getElementById('modal');
   const content = document.getElementById('modalContent');
@@ -323,6 +326,7 @@ function openModal(title, desc, price, img) {
   document.getElementById('modalImg').src = img;
 }
 
+// CLOSE MODAL
 function closeModal() {
   const modal = document.getElementById('modal');
   const content = document.getElementById('modalContent');
@@ -339,6 +343,20 @@ function closeModal() {
   }, 200);
 }
 
+// OUTSIDE CLICK
+function outsideClick(e) {
+  if (e.target.id === 'modal') {
+    closeModal();
+  }
+}
+
+function outsideClickCheckout(e) {
+  if (e.target.id === 'checkout') {
+    closeCheckout();
+  }
+}
+
+// CHECKOUT
 function openCheckout() {
   closeModal();
 
@@ -353,6 +371,45 @@ function openCheckout() {
   }, 200);
 }
 
+function closeCheckout() {
+  const checkout = document.getElementById('checkout');
+  const content = document.getElementById('checkoutContent');
+
+  content.classList.remove('scale-in');
+  content.classList.add('scale-out');
+
+  checkout.classList.remove('fade-in');
+  checkout.classList.add('fade-out');
+
+  setTimeout(() => {
+    checkout.classList.add('hidden');
+    checkout.classList.remove('flex', 'fade-out');
+  }, 200);
+}
+
+// ESC KEY
+document.addEventListener('keydown', function(e) {
+  if (e.key === "Escape") {
+    closeModal();
+    closeCheckout();
+  }
+});
+
+// SWIPE MOBILE (DOWN TO CLOSE)
+document.addEventListener('touchstart', function(e) {
+  startY = e.touches[0].clientY;
+});
+
+document.addEventListener('touchmove', function(e) {
+  let currentY = e.touches[0].clientY;
+
+  if (currentY - startY > 100) {
+    closeModal();
+    closeCheckout();
+  }
+});
+
+// SUCCESS
 function fakeSuccess() {
   alert("Pembayaran berhasil! 🎉 (Simulasi)");
   location.reload();
