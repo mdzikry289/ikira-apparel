@@ -262,47 +262,68 @@
 <!-- MODAL -->
 <div id="modal" onclick="outsideClick(event)" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
    <div id="modalContent" class="bg-white rounded-xl max-w-md w-full p-6 relative">
-  <div class="bg-white rounded-xl max-w-md w-full p-6 relative">
 
-    <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-500">✕</button>
+  <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-500">✕</button>
 
-    <img id="modalImg" class="w-full h-64 object-cover rounded mb-4">
+  <img id="modalImg" class="w-full h-64 object-cover rounded mb-4">
 
-    <h3 id="modalTitle" class="font-bold text-xl mb-2"></h3>
-    <p id="modalDesc" class="text-gray-600 text-sm mb-3"></p>
-    <p id="modalPrice" class="font-bold text-lg mb-4"></p>
+  <h3 id="modalTitle" class="font-bold text-xl mb-2"></h3>
+  <p id="modalDesc" class="text-gray-600 text-sm mb-3"></p>
+  <p id="modalPrice" class="font-bold text-lg mb-4"></p>
 
-    <button onclick="openCheckout()" class="bg-black text-white w-full py-3 rounded-lg">
-      Checkout
-    </button>
-
+  <!-- SIZE -->
+  <div class="mb-4">
+    <p class="text-sm font-semibold mb-2">Pilih Size:</p>
+    <div class="flex gap-2">
+      <button onclick="selectSize(this)" class="size-btn border px-3 py-1 rounded">S</button>
+      <button onclick="selectSize(this)" class="size-btn border px-3 py-1 rounded">M</button>
+      <button onclick="selectSize(this)" class="size-btn border px-3 py-1 rounded">L</button>
     </div>
+  </div>
+
+  <!-- QUANTITY -->
+  <div class="mb-4">
+    <p class="text-sm font-semibold mb-2">Jumlah:</p>
+    <div class="flex items-center gap-3">
+      <button onclick="changeQty(-1)" class="px-3 py-1 border rounded">-</button>
+      <span id="qty">1</span>
+      <button onclick="changeQty(1)" class="px-3 py-1 border rounded">+</button>
+    </div>
+  </div>
+
+  <!-- BUTTON -->
+  <button onclick="addToCart()" class="bg-black text-white w-full py-3 rounded-lg">
+    + Keranjang
+  </button>
+
+</div>
   </div>
 </div>
 
 <!-- CHECKOUT -->
 <div id="checkout" onclick="outsideClickCheckout(event)" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
   <div id="checkoutContent" class="bg-white rounded-xl max-w-md w-full p-6">
-  <div class="bg-white rounded-xl max-w-md w-full p-6">
 
-    <h3 class="font-bold text-xl mb-4">Checkout</h3>
+  <h3 class="font-bold text-xl mb-4">Ringkasan Pesanan</h3>
 
-    <input placeholder="Nama" class="border w-full p-2 mb-3 rounded">
-    <input placeholder="Alamat" class="border w-full p-2 mb-3 rounded">
-
-    <p class="mb-2 font-semibold">Pilih Pembayaran:</p>
-
-    <select class="border w-full p-2 mb-4 rounded">
-      <option>Transfer Bank</option>
-      <option>QRIS (OVO, Gopay, DANA)</option>
-      <option>COD</option>
-    </select>
-
-    <button onclick="fakeSuccess()" class="bg-green-500 text-white w-full py-3 rounded">
-      Bayar Sekarang
-    </button>
-
+  <div class="border p-4 rounded mb-4 text-sm">
+    <p id="summaryTitle"></p>
+    <p id="summarySize"></p>
+    <p id="summaryQty"></p>
+    <p id="summaryPrice" class="font-bold mt-2"></p>
   </div>
+
+  <p class="mb-2 font-semibold">Pilih Pembayaran:</p>
+
+  <select onchange="showPayment(this.value)" class="border w-full p-2 mb-4 rounded">
+    <option value="">-- Pilih --</option>
+    <option value="qris">QRIS</option>
+    <option value="transfer">Transfer Bank</option>
+  </select>
+
+  <div id="paymentArea"></div>
+
+</div>
 </div>
 </div>
 
@@ -413,6 +434,99 @@ document.addEventListener('touchmove', function(e) {
 function fakeSuccess() {
   alert("Pembayaran berhasil! 🎉 (Simulasi)");
   location.reload();
+}
+  let selectedSize = null;
+let quantity = 1;
+let cart = {};
+
+// SIZE
+function selectSize(btn) {
+  document.querySelectorAll('.size-btn').forEach(b => {
+    b.classList.remove('bg-black','text-white');
+  });
+
+  btn.classList.add('bg-black','text-white');
+  selectedSize = btn.innerText;
+}
+
+// QUANTITY
+function changeQty(val) {
+  quantity += val;
+  if (quantity < 1) quantity = 1;
+  document.getElementById('qty').innerText = quantity;
+}
+
+// ADD TO CART
+function addToCart() {
+  if (!selectedSize) {
+    alert("Pilih size dulu ya!");
+    return;
+  }
+
+  cart = {
+    title: document.getElementById('modalTitle').innerText,
+    price: document.getElementById('modalPrice').innerText,
+    qty: quantity,
+    size: selectedSize
+  };
+
+  // ANIMASI
+  const btn = event.target;
+  btn.innerText = "✔ Ditambahkan";
+  btn.classList.add("bg-green-500");
+
+  setTimeout(() => {
+    openCheckout();
+  }, 800);
+}
+
+  function openCheckout() {
+  closeModal();
+
+  setTimeout(() => {
+    const checkout = document.getElementById('checkout');
+    const content = document.getElementById('checkoutContent');
+
+    checkout.classList.remove('hidden');
+    checkout.classList.add('flex', 'fade-in');
+
+    content.classList.add('scale-in');
+
+    // SET SUMMARY
+    document.getElementById('summaryTitle').innerText = cart.title;
+    document.getElementById('summarySize').innerText = "Size: " + cart.size;
+    document.getElementById('summaryQty').innerText = "Qty: " + cart.qty;
+    document.getElementById('summaryPrice').innerText = cart.price;
+  }, 200);
+}
+
+// PAYMENT UI
+function showPayment(method) {
+  const area = document.getElementById('paymentArea');
+
+  if (method === "qris") {
+    area.innerHTML = `
+      <div class="text-center">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ikira" class="mx-auto mb-3">
+        <p class="text-sm">Scan QR untuk pembayaran</p>
+        <button onclick="fakeSuccess()" class="bg-green-500 text-white w-full mt-4 py-2 rounded">
+          Saya Sudah Bayar
+        </button>
+      </div>
+    `;
+  }
+
+  if (method === "transfer") {
+    area.innerHTML = `
+      <div class="text-sm">
+        <p>BCA: 123456789</p>
+        <p>a.n Ikira Apparel</p>
+        <button onclick="fakeSuccess()" class="bg-green-500 text-white w-full mt-4 py-2 rounded">
+          Konfirmasi Pembayaran
+        </button>
+      </div>
+    `;
+  }
 }
 </script>
 
