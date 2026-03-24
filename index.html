@@ -9,9 +9,47 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Poppins', sans-serif; }
-  </style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Poppins', sans-serif; }
+
+  /* Overlay fade */
+  .fade-in {
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  .fade-out {
+    animation: fadeOut 0.3s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; backdrop-filter: blur(0px); }
+    to { opacity: 1; backdrop-filter: blur(4px); }
+  }
+
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  /* Modal pop */
+  .scale-in {
+    animation: scaleIn 0.3s ease forwards;
+  }
+
+  .scale-out {
+    animation: scaleOut 0.2s ease forwards;
+  }
+
+  @keyframes scaleIn {
+    from { transform: scale(0.9) translateY(20px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+  }
+
+  @keyframes scaleOut {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(0.9); opacity: 0; }
+  }
+</style>
 </head>
 
 <body class="bg-white text-gray-800">
@@ -223,6 +261,7 @@
 
 <!-- MODAL -->
 <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+   <div id="modalContent" class="bg-white rounded-xl max-w-md w-full p-6 relative">
   <div class="bg-white rounded-xl max-w-md w-full p-6 relative">
 
     <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-500">✕</button>
@@ -237,11 +276,13 @@
       Checkout
     </button>
 
+    </div>
   </div>
 </div>
 
 <!-- CHECKOUT -->
 <div id="checkout" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div id="checkoutContent" class="bg-white rounded-xl max-w-md w-full p-6">
   <div class="bg-white rounded-xl max-w-md w-full p-6">
 
     <h3 class="font-bold text-xl mb-4">Checkout</h3>
@@ -262,6 +303,7 @@
     </button>
 
   </div>
+</div>
 </div>
 
 <script>
