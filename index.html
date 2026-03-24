@@ -80,9 +80,24 @@
     Lihat Koleksi
   </a>
 </section> -->
-  <video autoplay muted loop class="absolute w-full h-full object-cover">
-  <source src="video.mp4" type="video/mp4">
-</video>
+<section class="relative h-screen flex items-center justify-center text-white">
+
+  <!-- VIDEO -->
+  <video autoplay muted loop playsinline
+    class="absolute w-full h-full object-cover">
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+  <!-- OVERLAY -->
+  <div class="absolute inset-0 bg-black/60"></div>
+
+  <!-- CONTENT -->
+  <div class="relative z-10 text-center">
+    <h1 class="text-4xl font-bold">Ikira Apparel</h1>
+    <p class="text-gray-300">Upgrade style kamu sekarang</p>
+  </div>
+
+</section>
 
 <!-- PRODUK -->
 <section id="produk" class="py-20 px-6">
