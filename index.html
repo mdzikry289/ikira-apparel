@@ -83,10 +83,20 @@
 <section class="relative h-screen flex items-center justify-center text-white">
 
   <!-- VIDEO -->
-<video autoplay muted loop playsinline preload="auto"
-  class="absolute w-full h-full object-cover">
-  <source src="video.mp4" type="video/mp4">
-</video>
+<section class="relative h-[70vh] flex items-center justify-center text-white overflow-hidden">
+
+  <video autoplay muted loop playsinline
+    class="absolute w-full h-full object-cover scale-110">
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+  <div class="absolute inset-0 bg-black/60"></div>
+
+  <div class="relative z-10 text-center">
+    <h1 class="text-4xl font-bold">Ikira Apparel</h1>
+  </div>
+
+</section>
 
   <!-- OVERLAY -->
   <div class="absolute inset-0 bg-black/60"></div>
