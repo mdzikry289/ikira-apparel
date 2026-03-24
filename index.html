@@ -4,136 +4,207 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ikira Apparel</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
+
   <style>
+    html { scroll-behavior: smooth; }
     body { font-family: 'Poppins', sans-serif; }
   </style>
 </head>
 
 <body class="bg-white text-gray-800">
 
-  <!-- NAVBAR -->
-  <header class="flex justify-between items-center px-8 py-4 shadow-sm">
-    <h1 class="text-xl font-bold">Ikira Apparel.</h1>
+<!-- NAVBAR -->
+<header class="fixed top-0 left-0 w-full bg-white shadow z-50">
+  <div class="flex justify-between items-center px-6 py-4">
+    <h1 class="font-bold text-lg">Ikira Apparel.</h1>
     <a href="#produk" class="bg-black text-white px-4 py-2 rounded-full text-sm">
-      Lihat Produk
+      Produk
     </a>
-  </header>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <section class="text-center py-20 px-6 bg-gradient-to-b from-gray-900 to-black text-white">
-    <h2 class="text-4xl md:text-5xl font-bold mb-6">
-      Tampil Stylish, Lebih Percaya Diri
-    </h2>
-    <p class="mb-8 text-gray-300 max-w-xl mx-auto">
-      Koleksi fashion modern dari Ikira Apparel yang dirancang untuk kamu yang ingin tampil beda, percaya diri, dan standout setiap hari.
-    </p>
-    <a href="#produk" class="bg-white text-black px-6 py-3 rounded-full font-semibold">
-      Jelajahi Koleksi
-    </a>
-  </section>
+<!-- HERO -->
+<section class="pt-28 pb-20 px-6 text-center bg-gradient-to-b from-gray-900 to-black text-white">
+  <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+    Upgrade Style Kamu <br> Jadi Lebih Standout
+  </h2>
+  <p class="max-w-xl mx-auto text-gray-300 mb-8">
+    Ikira Apparel menghadirkan fashion modern dengan kualitas premium yang bikin kamu tampil lebih percaya diri setiap hari.
+  </p>
+  <a href="#produk" class="bg-white text-black px-6 py-3 rounded-full font-semibold">
+    Lihat Koleksi
+  </a>
+</section>
 
-  <!-- PRODUK UNGGULAN -->
-  <section id="produk" class="py-20 px-8">
-    <h2 class="text-3xl font-bold text-center mb-12">
-      Produk Unggulan 🔥
-    </h2>
+<!-- PRODUK -->
+<section id="produk" class="py-20 px-6">
+  <h2 class="text-3xl font-bold text-center mb-12">
+    Produk Unggulan 🔥
+  </h2>
 
-    <div class="grid md:grid-cols-3 gap-8">
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
-      <!-- PRODUK 1 -->
-      <div class="border rounded-xl overflow-hidden shadow hover:shadow-lg transition">
-        <img src="https://via.placeholder.com/400x400" class="w-full">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg">Kaos Oversize Premium</h3>
-          <p class="text-gray-500 text-sm mb-2">Bahan cotton combed 30s, adem & nyaman</p>
-          <p class="font-bold text-xl">Rp 95.000</p>
-        </div>
+    <!-- ITEM -->
+    <div class="border rounded-xl overflow-hidden shadow hover:shadow-xl transition">
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" class="w-full h-72 object-cover">
+        <span class="absolute top-3 left-3 bg-black text-white text-xs px-3 py-1 rounded-full">
+          Best Seller
+        </span>
       </div>
-
-      <!-- PRODUK 2 -->
-      <div class="border rounded-xl overflow-hidden shadow hover:shadow-lg transition">
-        <img src="https://via.placeholder.com/400x400" class="w-full">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg">Kemeja Casual Modern</h3>
-          <p class="text-gray-500 text-sm mb-2">Cocok untuk santai & formal</p>
-          <p class="font-bold text-xl">Rp 135.000</p>
-        </div>
+      <div class="p-5">
+        <h3 class="font-semibold text-lg mb-1">Kaos Oversize Premium</h3>
+        <p class="text-gray-500 text-sm mb-3">
+          Cotton combed 30s, adem, breathable, cocok daily wear & street style.
+        </p>
+        <p class="font-bold text-xl mb-3">Rp 95.000</p>
+        <a href="#" class="text-sm text-black font-semibold underline">
+          Lihat Detail →
+        </a>
       </div>
-
-      <!-- PRODUK 3 -->
-      <div class="border rounded-xl overflow-hidden shadow hover:shadow-lg transition">
-        <img src="https://via.placeholder.com/400x400" class="w-full">
-        <div class="p-4">
-          <h3 class="font-semibold text-lg">Hoodie Streetwear</h3>
-          <p class="text-gray-500 text-sm mb-2">Design trendy & kekinian</p>
-          <p class="font-bold text-xl">Rp 165.000</p>
-        </div>
-      </div>
-
     </div>
-  </section>
 
-  <!-- KEUNGGULAN -->
-  <section class="bg-gray-100 py-20 px-8 text-center">
-    <h2 class="text-3xl font-bold mb-12">
-      Kenapa Pilih Ikira?
-    </h2>
-
-    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-
-      <div>
-        <h3 class="font-semibold text-lg mb-2">🔥 Desain Eksklusif</h3>
-        <p class="text-gray-600">Tidak pasaran, selalu mengikuti trend terbaru</p>
+    <!-- ITEM -->
+    <div class="border rounded-xl overflow-hidden shadow hover:shadow-xl transition">
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7" class="w-full h-72 object-cover">
+        <span class="absolute top-3 left-3 bg-yellow-400 text-black text-xs px-3 py-1 rounded-full">
+          New
+        </span>
       </div>
-
-      <div>
-        <h3 class="font-semibold text-lg mb-2">🌿 Bahan Premium</h3>
-        <p class="text-gray-600">Nyaman dipakai seharian tanpa gerah</p>
+      <div class="p-5">
+        <h3 class="font-semibold text-lg mb-1">Kemeja Casual Modern</h3>
+        <p class="text-gray-500 text-sm mb-3">
+          Fit stylish, cocok untuk hangout, kerja, maupun acara santai.
+        </p>
+        <p class="font-bold text-xl mb-3">Rp 135.000</p>
+        <a href="#" class="text-sm text-black font-semibold underline">
+          Lihat Detail →
+        </a>
       </div>
-
-      <div>
-        <h3 class="font-semibold text-lg mb-2">⚡ Fast Response</h3>
-        <p class="text-gray-600">Pelayanan cepat & terpercaya</p>
-      </div>
-
     </div>
-  </section>
 
-  <!-- CTA -->
-  <section class="py-20 text-center px-6">
-    <h2 class="text-3xl font-bold mb-4">
-      Siap Upgrade Style Kamu?
-    </h2>
-    <p class="text-gray-600 mb-8">
-      Jangan sampai kehabisan — koleksi terbatas!
-    </p>
-
-    <a href="https://wa.me/6281234567890"
-       class="bg-green-500 text-white px-8 py-4 rounded-full text-lg font-semibold shadow hover:scale-105 transition">
-       Order Sekarang via WhatsApp
-    </a>
-  </section>
-
-  <!-- TESTIMONI -->
-  <section class="bg-black text-white py-20 px-8 text-center">
-    <h2 class="text-3xl font-bold mb-10">
-      Apa Kata Mereka?
-    </h2>
-
-    <div class="max-w-3xl mx-auto space-y-6">
-      <p class="italic">"Bahannya premium banget, worth it!"</p>
-      <p class="italic">"Design-nya beda dari yang lain 🔥"</p>
-      <p class="italic">"Pengiriman cepat, puas banget!"</p>
+    <!-- ITEM -->
+    <div class="border rounded-xl overflow-hidden shadow hover:shadow-xl transition">
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7" class="w-full h-72 object-cover">
+        <span class="absolute top-3 left-3 bg-red-500 text-white text-xs px-3 py-1 rounded-full">
+          Limited
+        </span>
+      </div>
+      <div class="p-5">
+        <h3 class="font-semibold text-lg mb-1">Hoodie Streetwear</h3>
+        <p class="text-gray-500 text-sm mb-3">
+          Design bold & trendy, bahan tebal tapi tetap nyaman.
+        </p>
+        <p class="font-bold text-xl mb-3">Rp 165.000</p>
+        <a href="#" class="text-sm text-black font-semibold underline">
+          Lihat Detail →
+        </a>
+      </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="text-center py-6 text-sm text-gray-500">
-    © 2026 Ikira Apparel. All rights reserved.
-  </footer>
+  </div>
+</section>
+
+<!-- KEUNGGULAN -->
+<section class="bg-gray-100 py-20 px-6">
+  <h2 class="text-3xl font-bold text-center mb-12">
+    Kenapa Pilih Ikira?
+  </h2>
+
+  <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+
+    <div>
+      <h3 class="font-semibold text-lg mb-2">🔥 Desain Eksklusif & Trendy</h3>
+      <p class="text-gray-600">
+        Setiap produk Ikira dirancang mengikuti tren terbaru, sehingga kamu selalu tampil up-to-date dan beda dari yang lain.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-lg mb-2">🌿 Material Premium</h3>
+      <p class="text-gray-600">
+        Menggunakan bahan pilihan yang nyaman, adem, dan tahan lama — cocok dipakai seharian.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-lg mb-2">⚡ Produksi Terbatas</h3>
+      <p class="text-gray-600">
+        Tidak diproduksi massal, sehingga menjaga eksklusivitas setiap koleksi.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-lg mb-2">💬 Pelayanan Cepat</h3>
+      <p class="text-gray-600">
+        Tim responsif siap membantu kamu dari pemesanan hingga pengiriman.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONI -->
+<section class="py-20 px-6 text-center">
+  <h2 class="text-3xl font-bold mb-12">Apa Kata Mereka?</h2>
+
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+    <!-- TESTI -->
+    <div class="border p-6 rounded-xl shadow">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-16 h-16 rounded-full mx-auto mb-4">
+      <p class="mb-3">⭐⭐⭐⭐⭐</p>
+      <p class="text-gray-600 text-sm">
+        "Kualitasnya di atas ekspektasi, nyaman banget dipakai!"
+      </p>
+      <p class="mt-3 font-semibold">Andi</p>
+    </div>
+
+    <div class="border p-6 rounded-xl shadow">
+      <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-16 h-16 rounded-full mx-auto mb-4">
+      <p class="mb-3">⭐⭐⭐⭐⭐</p>
+      <p class="text-gray-600 text-sm">
+        "Design-nya keren, beda dari yang lain 🔥"
+      </p>
+      <p class="mt-3 font-semibold">Sinta</p>
+    </div>
+
+    <div class="border p-6 rounded-xl shadow">
+      <img src="https://randomuser.me/api/portraits/men/55.jpg" class="w-16 h-16 rounded-full mx-auto mb-4">
+      <p class="mb-3">⭐⭐⭐⭐⭐</p>
+      <p class="text-gray-600 text-sm">
+        "Pengiriman cepat dan packaging rapi!"
+      </p>
+      <p class="mt-3 font-semibold">Rizky</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 text-center bg-black text-white px-6">
+  <h2 class="text-3xl font-bold mb-4">
+    Siap Tampil Lebih Percaya Diri?
+  </h2>
+  <p class="mb-6 text-gray-300">
+    Jangan sampai kehabisan — stok terbatas!
+  </p>
+
+  <a href="https://wa.me/6281234567890"
+     class="bg-green-500 px-8 py-4 rounded-full font-semibold text-lg">
+     Order Sekarang via WhatsApp
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center py-6 text-sm text-gray-500">
+  © 2026 Ikira Apparel
+</footer>
 
 </body>
 </html>
