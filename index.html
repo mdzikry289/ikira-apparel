@@ -83,9 +83,10 @@
 <section class="relative h-screen flex items-center justify-center text-white">
 
   <!-- VIDEO -->
-<video class="absolute w-full h-full object-cover">
-    <source src="video.mp4" type="video/mp4">
-  </video>
+<video autoplay muted loop playsinline preload="auto"
+  class="absolute w-full h-full object-cover">
+  <source src="video.mp4" type="video/mp4">
+</video>
 
   <!-- OVERLAY -->
   <div class="absolute inset-0 bg-black/60"></div>
