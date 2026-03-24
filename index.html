@@ -308,8 +308,14 @@
 
 <script>
 function openModal(title, desc, price, img) {
-  document.getElementById('modal').classList.remove('hidden');
-  document.getElementById('modal').classList.add('flex');
+  const modal = document.getElementById('modal');
+  const content = document.getElementById('modalContent');
+
+  modal.classList.remove('hidden');
+  modal.classList.add('flex', 'fade-in');
+
+  content.classList.remove('scale-out');
+  content.classList.add('scale-in');
 
   document.getElementById('modalTitle').innerText = title;
   document.getElementById('modalDesc').innerText = desc;
@@ -318,13 +324,33 @@ function openModal(title, desc, price, img) {
 }
 
 function closeModal() {
-  document.getElementById('modal').classList.add('hidden');
+  const modal = document.getElementById('modal');
+  const content = document.getElementById('modalContent');
+
+  content.classList.remove('scale-in');
+  content.classList.add('scale-out');
+
+  modal.classList.remove('fade-in');
+  modal.classList.add('fade-out');
+
+  setTimeout(() => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex', 'fade-out');
+  }, 200);
 }
 
 function openCheckout() {
-  document.getElementById('modal').classList.add('hidden');
-  document.getElementById('checkout').classList.remove('hidden');
-  document.getElementById('checkout').classList.add('flex');
+  closeModal();
+
+  setTimeout(() => {
+    const checkout = document.getElementById('checkout');
+    const content = document.getElementById('checkoutContent');
+
+    checkout.classList.remove('hidden');
+    checkout.classList.add('flex', 'fade-in');
+
+    content.classList.add('scale-in');
+  }, 200);
 }
 
 function fakeSuccess() {
