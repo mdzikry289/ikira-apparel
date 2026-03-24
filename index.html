@@ -61,9 +61,14 @@
           Cotton combed 30s, adem, breathable, cocok daily wear & street style.
         </p>
         <p class="font-bold text-xl mb-3">Rp 95.000</p>
-        <a href="#" class="text-sm text-black font-semibold underline">
-          Lihat Detail →
-        </a>
+          <button onclick="openModal(
+          'Kaos Oversize Premium',
+          'Bahan cotton combed 30s, adem, nyaman dipakai harian.',
+          'Rp 95.000',
+          'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab'
+          )" class="text-sm text-black font-semibold underline">
+            Lihat Detail →
+          </button>
       </div>
     </div>
 
@@ -81,9 +86,14 @@
           Fit stylish, cocok untuk hangout, kerja, maupun acara santai.
         </p>
         <p class="font-bold text-xl mb-3">Rp 135.000</p>
-        <a href="#" class="text-sm text-black font-semibold underline">
+        <button onclick="openModal(
+        'Kemeja Casual Modern',
+        'Fit stylish, cocok untuk hangout, kerja, maupun acara santai.',
+        'Rp 135.000',
+        'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab'
+        )" class="text-sm text-black font-semibold underline">
           Lihat Detail →
-        </a>
+        </button>
       </div>
     </div>
 
@@ -101,9 +111,14 @@
           Design bold & trendy, bahan tebal tapi tetap nyaman.
         </p>
         <p class="font-bold text-xl mb-3">Rp 165.000</p>
-        <a href="#" class="text-sm text-black font-semibold underline">
-          Lihat Detail →
-        </a>
+        <button onclick="openModal(
+                'Hoodie Streetwear',
+                'Design bold & trendy, bahan tebal tapi tetap nyaman.',
+                'Rp 165.000',
+                'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab'
+                )" class="text-sm text-black font-semibold underline">
+                  Lihat Detail →
+                </button>
       </div>
     </div>
 
@@ -205,6 +220,76 @@
 <footer class="text-center py-6 text-sm text-gray-500">
   © 2026 Ikira Apparel
 </footer>
+
+<!-- MODAL -->
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-xl max-w-md w-full p-6 relative">
+
+    <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-500">✕</button>
+
+    <img id="modalImg" class="w-full h-64 object-cover rounded mb-4">
+
+    <h3 id="modalTitle" class="font-bold text-xl mb-2"></h3>
+    <p id="modalDesc" class="text-gray-600 text-sm mb-3"></p>
+    <p id="modalPrice" class="font-bold text-lg mb-4"></p>
+
+    <button onclick="openCheckout()" class="bg-black text-white w-full py-3 rounded-lg">
+      Checkout
+    </button>
+
+  </div>
+</div>
+
+<!-- CHECKOUT -->
+<div id="checkout" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-xl max-w-md w-full p-6">
+
+    <h3 class="font-bold text-xl mb-4">Checkout</h3>
+
+    <input placeholder="Nama" class="border w-full p-2 mb-3 rounded">
+    <input placeholder="Alamat" class="border w-full p-2 mb-3 rounded">
+
+    <p class="mb-2 font-semibold">Pilih Pembayaran:</p>
+
+    <select class="border w-full p-2 mb-4 rounded">
+      <option>Transfer Bank</option>
+      <option>QRIS (OVO, Gopay, DANA)</option>
+      <option>COD</option>
+    </select>
+
+    <button onclick="fakeSuccess()" class="bg-green-500 text-white w-full py-3 rounded">
+      Bayar Sekarang
+    </button>
+
+  </div>
+</div>
+
+<script>
+function openModal(title, desc, price, img) {
+  document.getElementById('modal').classList.remove('hidden');
+  document.getElementById('modal').classList.add('flex');
+
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('modalDesc').innerText = desc;
+  document.getElementById('modalPrice').innerText = price;
+  document.getElementById('modalImg').src = img;
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.add('hidden');
+}
+
+function openCheckout() {
+  document.getElementById('modal').classList.add('hidden');
+  document.getElementById('checkout').classList.remove('hidden');
+  document.getElementById('checkout').classList.add('flex');
+}
+
+function fakeSuccess() {
+  alert("Pembayaran berhasil! 🎉 (Simulasi)");
+  location.reload();
+}
+</script>
 
 </body>
 </html>
