@@ -49,6 +49,10 @@
     from { transform: scale(1); opacity: 1; }
     to { transform: scale(0.9); opacity: 0; }
   }
+
+      #modal, #checkout {
+    backdrop-filter: blur(4px);
+  }
 </style>
 </head>
 
@@ -348,7 +352,7 @@ function openModal(title, desc, price, img) {
 }
 
 // CLOSE MODAL
-function closeModal() {
+function closeModal(callback) {
   const modal = document.getElementById('modal');
   const content = document.getElementById('modalContent');
 
@@ -361,7 +365,9 @@ function closeModal() {
   setTimeout(() => {
     modal.classList.add('hidden');
     modal.classList.remove('flex', 'fade-out');
-  }, 200);
+
+    if (callback) callback(); // 🔥 ini kunci fix
+  }, 250);
 }
 
 // OUTSIDE CLICK
@@ -379,9 +385,7 @@ function outsideClickCheckout(e) {
 
 // CHECKOUT
 function openCheckout() {
-  closeModal();
-
-  setTimeout(() => {
+  closeModal(() => {
     const checkout = document.getElementById('checkout');
     const content = document.getElementById('checkoutContent');
 
@@ -389,7 +393,13 @@ function openCheckout() {
     checkout.classList.add('flex', 'fade-in');
 
     content.classList.add('scale-in');
-  }, 200);
+
+    // SET SUMMARY
+    document.getElementById('summaryTitle').innerText = cart.title;
+    document.getElementById('summarySize').innerText = "Size: " + cart.size;
+    document.getElementById('summaryQty').innerText = "Qty: " + cart.qty;
+    document.getElementById('summaryPrice').innerText = cart.price;
+  });
 }
 
 function closeCheckout() {
